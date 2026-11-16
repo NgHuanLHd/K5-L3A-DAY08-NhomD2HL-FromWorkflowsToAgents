@@ -38,4 +38,4 @@ Ledger + evaluation (nhánh `feat/ledger-eval`):
 
 ## 6. Tự đánh giá
 
-...
+Em hoàn thành test ledger, benchmark, crash 20/20 và điền ADR/research card, đã tự kiểm bằng pytest và check_submission. Em cần phối hợp nhóm gộp main và hoàn thiện group_report.
