@@ -30,7 +30,7 @@ Gợi ý chia vai:
 | ---------------- | ---------------------- | ------ | --------------------- |
 | Vũ Gia Linh      | workflow + integration | 204619f | tests/test_team_workflow.py |
 | Nguyễn Thị Duyên | Single agent (ReAct)   |        |                       |
-| Nguyễn Đức Huân  | Orchestrator + Handoff |        |                       |
+| Nguyễn Đức Huân  | Orchestrator + Handoff | 3e8dd90 | tests/test_team_handoff.py |
 | Võ Thị Kim Huyền | ledger + evaluation    |        |                       |
 
 ## Cá nhân
@@ -96,15 +96,17 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Phần việc phụ trách
 
--
+- Shape C `src/lab8/shapes/orchestrator.py` (orchestrator + investigator chỉ đọc, handoff allowlist); review và gộp ba shape vào `main` qua PR #1.
 
 ### Đóng góp cụ thể
 
--
+- Cài orchestrator: handoff `facts={}`, investigator chỉ có tool đọc, quote từ order row bằng `compute_compensation`, gọi `durability.issue_refund` với quote đầy đủ và `crash_at`, không nuốt `InjectedCrash`, trace chỉ ghi handoff đã sanitize và field allowlist ở mọi nhánh return.
+- Thêm `src/tests/test_team_handoff.py` (18 test: trace không lộ `forbid_substrings`/canary/ticket, handoff đúng allowlist, claim không tồn tại vẫn trả `failed` có trace).
 
 ### Bằng chứng
 
--
+- Commit `3e8dd90`; `pytest -m student -k orchestrator`: 62 passed; `pytest -q`: 117 passed.
+- Báo cáo cá nhân: `report/team/2A202603690_NguyenDucHuan.md`.
 
 ## 2A202603679_Võ Thị Kim Huyền
 
