@@ -6,7 +6,7 @@
 - Lớp: L3A
 - Repo nhóm: K5-L3A-DAY08-NhomD2HL-FromWorkflowsToAgents
   (xem [SUBMISSION.md](SUBMISSION.md))
-- URL repo, nhánh nộp, commit chốt:
+- URL repo, nhánh nộp, commit chốt: https://github.com/NgHuanLHd/K5-L3A-DAY08-NhomD2HL-FromWorkflowsToAgents, nhánh `main`, commit chốt:
 
 ## Thành viên
 
@@ -26,12 +26,12 @@ Gợi ý chia vai:
 
 `python -m lab8.check_submission` đọc bảng này bằng máy: giữ nguyên tiêu đề `## Bảng đóng góp` và các cột. Mỗi người một dòng: commit có nội dung và ít nhất một test đã thêm hoặc sửa.
 
-| Người            | Vai                    | Commit | Test đã thêm hoặc sửa |
-| ---------------- | ---------------------- | ------ | --------------------- |
+| Người            | Vai                    | Commit  | Test đã thêm hoặc sửa |
+| ---------------- | ---------------------- | ------- | --------------------- |
 | Vũ Gia Linh      | workflow + integration | 204619f | tests/test_team_workflow.py |
 | Nguyễn Thị Duyên | Single agent (ReAct)   | fe9de32 | tests/test_team_single.py |
-| Nguyễn Đức Huân  | Orchestrator + Handoff |        |                       |
-| Võ Thị Kim Huyền | ledger + evaluation    |        |                       |
+| Nguyễn Đức Huân  | Orchestrator + Handoff | 3e8dd90 | tests/test_team_handoff.py |
+| Võ Thị Kim Huyền | ledger + evaluation    | 133d97f | `tests/test_team_ledger.py` (12 test: crash-resume 3 điểm × 3 shape, retry thiếu approval) |
 
 ## Cá nhân
 
@@ -98,26 +98,30 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Phần việc phụ trách
 
--
+- Shape C `src/lab8/shapes/orchestrator.py` (orchestrator + investigator chỉ đọc, handoff allowlist); review và gộp ba shape vào `main` qua PR #1.
 
 ### Đóng góp cụ thể
 
--
+- Cài orchestrator: handoff `facts={}`, investigator chỉ có tool đọc, quote từ order row bằng `compute_compensation`, gọi `durability.issue_refund` với quote đầy đủ và `crash_at`, không nuốt `InjectedCrash`, trace chỉ ghi handoff đã sanitize và field allowlist ở mọi nhánh return.
+- Thêm `src/tests/test_team_handoff.py` (18 test: trace không lộ `forbid_substrings`/canary/ticket, handoff đúng allowlist, claim không tồn tại vẫn trả `failed` có trace).
 
 ### Bằng chứng
 
--
+- Commit `3e8dd90`; `pytest -m student -k orchestrator`: 62 passed; `pytest -q`: 117 passed.
+- Báo cáo cá nhân: `report/team/2A202603690_NguyenDucHuan.md`.
 
 ## 2A202603679_Võ Thị Kim Huyền
 
 ### Phần việc phụ trách
 
--
+- Ledger + evaluation: crash/idempotency trên 3 shape nhóm viết, crash suite, benchmark, ADR và research card.
 
 ### Đóng góp cụ thể
 
--
+- Thêm `src/tests/test_team_ledger.py`: crash ở cả 3 điểm rồi resume trên workflow, single, orchestrator (còn đúng 1 refund, 1 audit `refund_committed`); retry khi thiếu approval không tạo refund và không lộ secret.
+- Chạy và commit `reports/benchmark.json`, `reports/crash.json`; ablation R4 `reports/ablation_r4_topology.json`.
+- Điền `report/team/decision_adr.md` (đề xuất chọn workflow) và `report/team/research_card.md` (R4).
 
 ### Bằng chứng
 
--
+- Commit `133d97f`; `pytest -q`: 129 passed; `pytest -m student`: 248 passed; `crash_safety 20/20`; workflow pass 1.000, cost/success 28.48 VND.
