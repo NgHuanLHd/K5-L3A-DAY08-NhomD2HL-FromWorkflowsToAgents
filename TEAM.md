@@ -29,7 +29,7 @@ Gợi ý chia vai:
 | Người            | Vai                    | Commit | Test đã thêm hoặc sửa |
 | ---------------- | ---------------------- | ------ | --------------------- |
 | Vũ Gia Linh      | workflow + integration | 204619f | tests/test_team_workflow.py |
-| Nguyễn Thị Duyên | Single agent (ReAct)   |        |                       |
+| Nguyễn Thị Duyên | Single agent (ReAct)   | fe9de32 | tests/test_team_single.py |
 | Nguyễn Đức Huân  | Orchestrator + Handoff | 3e8dd90 | tests/test_team_handoff.py |
 | Võ Thị Kim Huyền | ledger + evaluation    |        |                       |
 
@@ -82,15 +82,17 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Phần việc phụ trách
 
--
+- Shape B `src/lab8/shapes/single.py` (single agent ReAct) và test `src/tests/test_team_single.py`.
 
 ### Đóng góp cụ thể
 
--
+- Cài vòng ReAct bằng `run_react` với `max_steps=8`: `decide` chỉ chọn tool đọc (`lookup_order` → `lookup_refund_history` → `compute_compensation`), không bao giờ trả `issue_refund`. Sau vòng lặp, code của shape quyết định trạng thái và gọi `durability.issue_refund` với quote đầy đủ, truyền `crash_at`, không nuốt `InjectedCrash`, ghi trace ở mọi nhánh return.
+- Thêm `src/tests/test_team_single.py` (43 test): 14 claim public khớp nhãn `expected`, `decide` không trả tool ghi, dừng trong 8 bước, nhánh `needs_info` / claim không tồn tại vẫn ghi trace, crash rồi chạy lại vẫn 1 refund.
 
 ### Bằng chứng
 
--
+- Commit `fe9de32`, `9389e29`; `pytest -m student -k "single]"`: 62 passed; `pytest -q`: 117 passed.
+- Báo cáo cá nhân: `report/team/2A202603698_NguyenThiDuyen.md`.
 
 ## 2A202603690_Nguyễn Đức Huân
 
