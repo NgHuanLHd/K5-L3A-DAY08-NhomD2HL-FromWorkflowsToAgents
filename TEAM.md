@@ -6,7 +6,7 @@
 - Lớp: L3A
 - Repo nhóm: K5-L3A-DAY08-NhomD2HL-FromWorkflowsToAgents
   (xem [SUBMISSION.md](SUBMISSION.md))
-- URL repo, nhánh nộp, commit chốt:
+- URL repo, nhánh nộp, commit chốt: https://github.com/NgHuanLHd/K5-L3A-DAY08-NhomD2HL-FromWorkflowsToAgents, nhánh `main`, commit chốt:
 
 ## Thành viên
 
