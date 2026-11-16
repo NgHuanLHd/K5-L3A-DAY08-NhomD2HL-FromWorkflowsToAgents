@@ -28,7 +28,7 @@ Gợi ý chia vai:
 
 | Người            | Vai                    | Commit | Test đã thêm hoặc sửa |
 | ---------------- | ---------------------- | ------ | --------------------- |
-| Vũ Gia Linh      | workflow + integration |        |                       |
+| Vũ Gia Linh      | workflow + integration | 204619f | tests/test_team_workflow.py |
 | Nguyễn Thị Duyên | Single agent (ReAct)   |        |                       |
 | Nguyễn Đức Huân  | Orchestrator + Handoff |        |                       |
 | Võ Thị Kim Huyền | ledger + evaluation    |        |                       |
@@ -66,15 +66,17 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Phần việc phụ trách
 
--
+- Shape A `src/lab8/shapes/workflow.py`; ghép code các nhánh vào `main`, giữ `python -m pytest -q` xanh.
 
 ### Đóng góp cụ thể
 
--
+- Cài workflow các bước cố định: đọc claim qua `get_claim_view`, xử lý `needs_info` / `escalated`, tính tiền bằng `compute_compensation` từ order row (bỏ qua số ngày trong ticket), quote bằng 0 thì `denied`, quote lớn hơn 0 thì gọi `durability.issue_refund` với quote đầy đủ và truyền `crash_at`, không nuốt `InjectedCrash`, ghi trace ở mọi nhánh return.
+- Thêm `src/tests/test_team_workflow.py` (T02 ở 5 seed; chạy lại cùng claim chỉ ra 1 dòng ledger).
 
 ### Bằng chứng
 
--
+- Commit `204619f`; `pytest -m student -k workflow`: 62 passed; `pytest -q`: 56 passed.
+- Báo cáo cá nhân: `report/team/2A202603677_VuGiaLinh.md`.
 
 ## 2A202603698_Nguyễn Thị Duyên
 
