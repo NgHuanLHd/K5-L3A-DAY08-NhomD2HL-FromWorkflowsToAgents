@@ -14,7 +14,7 @@
 | --: | ---------------- | ----------- | ------------------------------------------------------------------- | --------------- | ---------------------- |
 |   1 | Vũ Gia Linh      | 2A202603677 | [vugialinh905@gmail.com](mailto:vugialinh905@gmail.com)             | vugialinh905-wq | workflow + integration |
 |   2 | Nguyễn Thị Duyên | 2A202603698 | [nguyenduyen.260903@gmail.com](mailto:nguyenduyen.260903@gmail.com) | duyen26912      | Single agent (ReAct)   |
-|   3 | Nguyễn Đức Huân  | 2A202603690 |                                                                     | NgHuanLHd       | Orchestrator + Handoff |
+|   3 | Nguyễn Đức Huân  | 2A202603690 | [huanducj@gmail.com](mailto:huanducj@gmail.com)                     | NgHuanLHd       | Orchestrator + Handoff |
 |   4 | Võ Thị Kim Huyền | 2A202603679 | vothikimhuyenvta@gmail.com                                          | copengoknghek   | ledger + evaluation    |
 
 Gợi ý chia vai:
