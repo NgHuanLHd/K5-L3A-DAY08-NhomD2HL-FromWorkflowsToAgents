@@ -45,23 +45,6 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 
 Sao chép mục dưới đây cho từng thành viên.
 
-# Mng làm theo mẫu sau nhe:
-
-## MSSV_HovaTen
-
-### Phần việc phụ trách
-
-- Shape A `src/lab8/shapes/workflow.py`; ghép code các nhánh vào `main`, giữ `python -m pytest -q` xanh.
-
-### Đóng góp cụ thể
-
-- Cài 8 bước workflow: đọc claim qua `get_claim_view`, xử lý `needs_info` / `escalated`, tính tiền bằng `compute_compensation`, gọi `durability.issue_refund` với quote đầy đủ, ghi trace ở mọi nhánh return.
-- Merge các nhánh, xử lý conflict.
-
-### Bằng chứng
-
-- Commit `<hash>`; `pytest -m student -k workflow`: 62 passed.
-
 ## 2A202603677_Vũ Gia Linh
 
 ### Phần việc phụ trách
