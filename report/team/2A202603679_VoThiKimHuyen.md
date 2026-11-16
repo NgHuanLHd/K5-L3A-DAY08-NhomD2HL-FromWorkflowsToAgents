@@ -42,7 +42,5 @@ Ledger + evaluation (nhánh `feat/ledger-eval`):
 
 ## 6. Tự đánh giá
 
-## 6. Tự đánh giá
-
 Em hoàn thành phần ledger + evaluation: test ledger 12 case, benchmark/crash public, ADR và research card R4, ablation, cổng host và student matrix xanh, `check_submission` 0 FAIL. Sau khi nhận pack hidden của coach, em tự chạy selfcheck trên `student_drop/` và không thấy lỗi runtime hay nghi lộ secret trên 600 trial (3 shape) và 200 trial workflow. Em không tự tính được pass rate hidden (không nhãn), điểm hidden do giảng viên chấm.
 Hạn chế: kết quả benchmark/selfcheck gắn với commit trên nhánh `feat/ledger-eval`, khi nhóm gộp `main` cần chạy lại benchmark/crash nếu code shape đổi và cập nhật hash ADR theo SUBMISSION. Em cần phối hợp nhóm merge các nhánh vào `main` và nộp link LMS cá nhân.
