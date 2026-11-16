@@ -93,7 +93,7 @@ def _run(conn: sqlite3.Connection, claim_id: str, *, seed: int, crash_at: str | 
                 return {"final": {"status": "escalated"}}
             return {"tool": "lookup_refund_history", "args": dict(scope)}
         if last == "lookup_refund_history":
-            state["history"] = obs["last_result"]  # trace only; never subtracted from the quote
+            state["history"] = obs["last_result"]  # traced as counts only; never subtracted from the quote
             return {"tool": "compute_compensation", "args": {"order": state["order_view"]["order"]}}
         if last == "compute_compensation":
             state["quote"] = obs["last_result"]
@@ -118,6 +118,12 @@ def _run(conn: sqlite3.Connection, claim_id: str, *, seed: int, crash_at: str | 
         return done("failed", 0, "no_quote")
 
     trace.add("order", state["order_view"]["order"])  # already allowlisted by lookup_order
+    history = state.get("history") or {}
+    # Counts only, for the audit trail. The host enforces the per-order cap, so it is not subtracted here.
+    trace.add(
+        "refund_history",
+        {"refund_count": history.get("refund_count", 0), "refunded_vnd": history.get("refunded_vnd", 0)},
+    )
     quote = state["quote"]
     trace.add("quote", quote)
     proposal = int(quote["amount_vnd"])
